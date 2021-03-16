@@ -5,6 +5,7 @@
 #include "upnp_global.hpp"
 #include "QEventLoop"
 #include <QtNetwork/QNetworkReply>
+#include <QHostAddress>
 
 START_DEFINE_UPNP_NAMESPACE
 

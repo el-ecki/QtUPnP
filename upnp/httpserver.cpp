@@ -43,7 +43,7 @@ CHTTPServer::CHTTPServer (QHostAddress const & address, quint16 port, QObject* p
   bool success = listen (address, port);
   if (success)
   {
-    m_httpsRequest.setSslConfiguration (QSslConfiguration::defaultConfiguration ());
+    m_httpsRequest.setSslConfiguration(QSslConfiguration::defaultConfiguration ());
     connect (this, &CHTTPServer::httpValidReadMessage, this, &CHTTPServer::sendResponse, Qt::QueuedConnection);
     connect (this, &CHTTPServer::streamingReady, this, &CHTTPServer::streamBlock, Qt::QueuedConnection);
     m_done = true;

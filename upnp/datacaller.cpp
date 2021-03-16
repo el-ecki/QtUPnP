@@ -57,7 +57,6 @@ QByteArray CDataCaller::callData (QUrl const & url, int timeout)
 // Timeout event.
 void CDataCaller::timerEvent (QTimerEvent*)
 {
-  qDebug () << "CDataCaller::timerEvent: Quit on timeout";
   exit (-1);
 }
 
@@ -72,6 +71,5 @@ void CDataCaller::error (QNetworkReply::NetworkError err)
   auto    reply = dynamic_cast<QNetworkReply*>(sender ());
   QString error = QString ("Network reply error:%1->%2->%3")
                        .arg (err).arg (reply->url ().toString (), reply->errorString ());
-  qDebug () << "CDataCaller::error: " << err << " (" << error << ")";
   exit (-1);
 }

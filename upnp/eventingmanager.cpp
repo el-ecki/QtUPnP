@@ -2,6 +2,7 @@
 #include "helper.hpp"
 #include "dump.hpp"
 #include <QHostAddress>
+#include <QTime>
 
 USING_UPNP_NAMESPACE
 

@@ -2,6 +2,7 @@
 #include "actionmanager.hpp"
 #include "actioninfo.hpp"
 #include "dump.hpp"
+#include <QTime>
 
 USING_UPNP_NAMESPACE
 
@@ -27,7 +28,6 @@ CActionManager::~CActionManager ()
 
 void CActionManager::timerEvent (QTimerEvent*)
 {
-  qDebug () << "CActionManager::timerEvent: Quit on timeout";
   exit (-1);
 }
 
@@ -41,7 +41,6 @@ void CActionManager::error (QNetworkReply::NetworkError err)
   m_error             = err;
   auto    replySender = static_cast<QNetworkReply*>(sender ());
   QString errorString = replySender->errorString ();
-  qDebug () << "CActionManager::error: " << static_cast<int>(err) << " (" << errorString << ")";
   emit networkError (m_device, err, errorString);
 }
 
@@ -92,7 +91,6 @@ bool CActionManager::post (QString const & device, QUrl const & url, CActionInfo
         message          += '\n';
         message          += url.toString () + '\n';
         message          += info.message () + "\n\n";
-        qDebug () << "CActionManager::post:" << message;
         m_lastError.prepend (QString ("(%1) ").arg (statusCode));
         CDump::dump (message);
       }
